@@ -18,10 +18,12 @@
 
   (doseq [i (range 20)]
     (mc/insert db "stuff-and-things" {:cheese i,
-                                      :ston   (str "hussp" i)}))
+                                      :ston   (str "hussp " (* i i))}))
 
   (mc/insert db "stuff-and-things" {:cheese "ston"})
 
   (doseq [x (mc/find-maps db "stuff-and-things")]
     (println x))
+
+  (mc/remove db "stuff-and-things")
 )
